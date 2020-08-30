@@ -8,7 +8,7 @@
 const casual = require('casual');
 
 const reviewGenerator = function (numberOfData, options='product', roomid) {
-  let res = (options === 'product' ? [] : '');
+  let res = [];
 
   for (let i = 0; i < numberOfData; i++) {
     const curData = {};
@@ -45,44 +45,29 @@ const reviewGenerator = function (numberOfData, options='product', roomid) {
     // rating_value
     const value_rating = casual.double(from, to).toFixed(1);
     
-    if (options === 'product') {
-      curData.id = id;
-      curData.name = name;
-      curData.gender = gender;
-      curData.profilePicNum = profilePicNum;
-      curData.date = date;
-      curData.sentence = sentence;
-      curData.accuracy_rating = Number(accuracy_rating);
-      curData.communication_rating = Number(communication_rating);
-      curData.cleanliness_rating = Number(cleanliness_rating);
-      curData.location_rating = Number(location_rating);
-      curData.check_in_rating = Number(check_in_rating);
-      curData.value_rating = Number(value_rating);
-      
-      // overall_rating = ratings above / 6
-      curData.overall_rating = Number(((curData.accuracy_rating
-         + curData.communication_rating
-         + curData.cleanliness_rating
-         + curData.location_rating
-         + curData.check_in_rating
-         + curData.value_rating) / 6)
-        .toFixed(1));
-      res.push(curData);
-    }
-
-    if (options === 'write') {
-      res += 
-        `${roomid},${id},${name},${gender},${profilePicNum},${date},${sentence},${Number(accuracy_rating)},${Number(communication_rating)},${Number(cleanliness_rating)},${Number(location_rating)},${Number(check_in_rating)},${Number(value_rating)},${Number((
-          ( Number(accuracy_rating)
-          + Number(communication_rating)
-          + Number(cleanliness_rating)
-          + Number(location_rating)
-          + Number(check_in_rating)
-          + Number(value_rating)) / 6)
-         .toFixed(1))}\n`
-    }
+    curData.id = id;
+    curData.name = name;
+    curData.gender = gender;
+    curData.profilePicNum = profilePicNum;
+    curData.date = date;
+    curData.sentence = sentence;
+    curData.accuracy_rating = Number(accuracy_rating);
+    curData.communication_rating = Number(communication_rating);
+    curData.cleanliness_rating = Number(cleanliness_rating);
+    curData.location_rating = Number(location_rating);
+    curData.check_in_rating = Number(check_in_rating);
+    curData.value_rating = Number(value_rating);
+    
+    // overall_rating = ratings above / 6
+    curData.overall_rating = Number(((curData.accuracy_rating
+        + curData.communication_rating
+        + curData.cleanliness_rating
+        + curData.location_rating
+        + curData.check_in_rating
+        + curData.value_rating) / 6)
+      .toFixed(1));
+    res.push(curData);
   }
-
   return res;
 };
 

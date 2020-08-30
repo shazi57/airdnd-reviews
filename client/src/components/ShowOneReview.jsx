@@ -28,7 +28,7 @@ class ShowOneReview extends React.Component {
 
       //if sentence is short, return whole sentence
       if (sentence.length < CHAR_THRESHOLD || sentence.split(' ') < WORDS_THRESHOLD || this.state.show_content) {
-        return <div key={this.props.review.id + 'r'}>{sentence}</div>
+        return <div key={this.props.review.review_id + 'r'}>{sentence}</div>
       } else {
         let sentenceArr = sentence.split(/\b/);
         let newSentence = '';
@@ -37,8 +37,8 @@ class ShowOneReview extends React.Component {
         }
         newSentence += '...'
         return (
-          <div key={this.props.review.id + 'r'}>{newSentence}
-            <span className={style.readmore} key={this.props.review.id + 'rdm'} onClick={this.showContent.bind(this)}>
+          <div key={this.props.review.review_id + 'r'}>{newSentence}
+            <span className={style.readmore} key={this.props.review.review_id + 'rdm'} onClick={this.showContent.bind(this)}>
               Read more
           </span>
           </div>
@@ -50,7 +50,7 @@ class ShowOneReview extends React.Component {
 
     } else {
       return (
-        <Highlighter id={this.props.review.id}
+        <Highlighter id={this.props.review.review_id}
           searchWords={target}
           textToHighlight={sentence} />
       )
@@ -59,17 +59,17 @@ class ShowOneReview extends React.Component {
 
   render() {
     let gender = this.props.review.gender === 1 ? 'men' : 'women';
-    let profilePicNum = this.props.review.profilePicNum;
+    let profilePicNum = this.props.review.profilenum;
     let url = `https://s3.us-east-2.amazonaws.com/wtsesun/fakeprofilepics/${gender}/${profilePicNum}.jpg`;
     return (
-      <div className={style.review} key={this.props.review.id}>
+      <div className={style.review} key={this.props.review.review_id}>
         <div className={style.pictureNameAndDate}>
-          <div className={style.profile_picture} key={this.props.review.id + 'p'}
+          <div className={style.profile_picture} key={this.props.review.review_id + 'p'}
           style={{backgroundImage:`url(${url})`}}
           ></div>
           <div className={style.nameAndDate}>
-            <div className={style.name} key={this.props.review.id + 'n'}>{this.props.review.name}</div>
-            <div className={style.date} key={this.props.review.id + 'd'}>{this.props.review.date}</div>
+            <div className={style.name} key={this.props.review.review_id + 'n'}>{this.props.review.username}</div>
+            <div className={style.date} key={this.props.review.review_id + 'd'}>{this.props.review.reviewdate}</div>
           </div>
         </div>
         <div className={style.sentence}>

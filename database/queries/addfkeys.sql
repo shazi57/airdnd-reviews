@@ -1,0 +1,1 @@
+ALTER TABLE reviews ADD FOREIGN KEY(room_id) REFERENCES rooms(room_id);
