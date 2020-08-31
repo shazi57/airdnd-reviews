@@ -28,14 +28,16 @@ class App extends React.Component {
   componentDidMount() {
     axios.get(`/reviews/${window.location.href.match(/id\s*=\s*(.*)/)[1]}`)
       .then((response) => {
-        this.dataSlicer(response.data[0].reviews);
+        console.log(response.data);
+        this.dataSlicer(response.data);
         this.setState({
-          original_data: response.data[0].reviews,
-          num_reviews: response.data[0].reviews.length,
+          original_data: response.data,
+          num_reviews: response.data.length,
         });
-        this.findOverallRating(response.data[0].reviews);
+        this.findOverallRating(response.data);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         console.log("error");
       });
 
@@ -52,12 +54,12 @@ class App extends React.Component {
       value: 0,
     };
     for (let i = 0; i < rev_array.length; i++) {
-      sum_rating['accuracy'] += rev_array[i].accuracy_rating;
-      sum_rating['communication'] += rev_array[i].communication_rating;
-      sum_rating['cleanliness'] += rev_array[i].cleanliness_rating;
-      sum_rating['location'] += rev_array[i].location_rating;
-      sum_rating['check_in'] += rev_array[i].check_in_rating;
-      sum_rating['value'] += rev_array[i].value_rating;
+      sum_rating['accuracy'] += rev_array[i].accuracy;
+      sum_rating['communication'] += rev_array[i].communication;
+      sum_rating['cleanliness'] += rev_array[i].cleanliness;
+      sum_rating['location'] += rev_array[i].locationr;
+      sum_rating['check_in'] += rev_array[i].checkin;
+      sum_rating['value'] += rev_array[i].valuer;
     }
     let average = {};
     for (let key in sum_rating) {
