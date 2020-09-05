@@ -8,7 +8,7 @@
   },
   "scripts": {
     "react-dev": "webpack -d --watch --mode production --module-bind js=babel-loader",
-    "start": "nodemon server/index.js",
+    "start": "node server/index.js",
     "test": "jest test/test.js"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "fast-csv": "^4.3.1",
     "lodash": "^4.17.20",
     "mongoose": "^5.5.8",
+    "newrelic": "^6.13.0",
     "pg": "^8.3.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

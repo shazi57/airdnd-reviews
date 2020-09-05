@@ -11,7 +11,7 @@ const writeReviewStream = fs.createWriteStream(writeFilePathForReviews);
 //helper functions
 function writeReviewsForRoom(id) {
   let data = ''
-  const randomInt = casual.integer(0,10);
+  const randomInt = casual.integer(1,10);
   for (let k = 0; k < randomInt; k++) {
     data += singleReviewGenerator(id);
   }
