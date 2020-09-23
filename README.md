@@ -1,6 +1,6 @@
 # Airdnd-Reviews
 
-> Project description
+Airdnd-reviews is a full-stack review module written in React. It is well-formatted and support bulk-list of items via custom-built pagination. 
 
 ## How to run this projects
 
@@ -19,10 +19,6 @@
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
-
-## Usage
-
-> Some usage instructions
 
 ## Requirements
 
