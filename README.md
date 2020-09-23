@@ -16,7 +16,6 @@ Airdnd-reviews is a full-stack review module written in React. It is well-format
 
 ## Table of Contents
 
-1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
 
